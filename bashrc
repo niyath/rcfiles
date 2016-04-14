@@ -379,6 +379,10 @@ alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
 
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
+
 #-------------------------------------------------------------
 # Tailoring 'less'
 #-------------------------------------------------------------
@@ -458,6 +462,8 @@ alias kk='ll'
 function soffice() { command soffice "$@" & }
 function firefox() { command firefox "$@" & }
 function xpdf() { command xpdf "$@" & }
+
+
 
 
 #-------------------------------------------------------------
