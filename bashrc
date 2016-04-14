@@ -221,7 +221,7 @@ fi
 # Test user type:
 if [[ ${USER} == "root" ]]; then
     SU=${Red}           # User is root.
-elif [[ ${USER} != $(logname) ]]; then
+elif [[ ${USER} != $(id -nu) ]]; then
     SU=${BRed}          # User is not login user.
 else
     SU=${BCyan}         # User is normal (well ... most of us are).
@@ -382,6 +382,8 @@ alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
 fi
+
+source /opt/Xilinx/Vivado/2014.4/settings64.sh 
 
 #-------------------------------------------------------------
 # Tailoring 'less'
