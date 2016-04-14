@@ -11,7 +11,7 @@ YELLOW='\e[1;33m'
 LIGHTBLUE='\e[1;34m'
 NC='\e[m'
 
-PCT="\`if [[ \$EUID -eq 0 ]]; then T='$LIGHTRED' ; else T='$LIGHTBLUE'; fi; 
+PCT="\`if [[ \$EUID -eq 0 ]]; then T='\[$LIGHTRED\]' ; else T='\[$LIGHTBLUE\]'; fi; 
 echo \$T \`"
 
 #  For "literal" command substitution to be assigned to a variable,
@@ -22,8 +22,8 @@ echo \$T \`"
 #+ and it will not change afterwards even if the user ID changes.
 
 
-PS1="\n$GREEN[\w] \n$DARKGRAY($PCT\t$DARKGRAY)-($PCT\u$DARKGRAY)-($PCT\!
-$DARKGRAY)$YELLOW-> $NC"
+#PS1="\n\[$GREEN\][\w] \n\[$DARKGRAY\](\[$PCT\]\t\[$DARKGRAY\])-($PCT\u\[$DARKGRAY\])-($PCT\!
+#\[$DARKGRAY\])\[$YELLOW\]-> \[$NC\]"
 
 #  Escape a variables whose value changes:
 #        if [[ \$EUID -eq 0 ]],
@@ -43,9 +43,9 @@ $DARKGRAY)$YELLOW-> $NC"
 
 #  Variables PCT and PS1 can be merged into a new PS1 variable:
 
-PS1="\`if [[ \$EUID -eq 0 ]]; then PCT='$LIGHTRED';
-else PCT='$LIGHTBLUE'; fi; 
-echo '\n$GREEN[\w] \n$DARKGRAY('\$PCT'\t$DARKGRAY)-\
-('\$PCT'\u$DARKGRAY)-('\$PCT'\!$DARKGRAY)$YELLOW-> $NC'\`"
+PS1="\`if [[ \$EUID -eq 0 ]]; then PCT='\[$LIGHTRED\]';
+else PCT='\[$LIGHTBLUE\]'; fi; 
+echo '\n\[$GREEN\][\w] \n\[$DARKGRAY\]('\$PCT'\t\[$DARKGRAY\])-\
+('\$PCT'\u\[$DARKGRAY\])-('\$PCT'\!\[$DARKGRAY\])\[$YELLOW\]-> \[$NC\]'\`"
 
 # The trick is to use strong quoting for parts of old PS1 variable.
