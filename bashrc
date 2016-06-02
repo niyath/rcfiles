@@ -383,7 +383,12 @@ if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
 fi
 
-source /opt/Xilinx/Vivado/2014.4/settings64.sh 
+if [ -f /opt/Xilinx/Vivado/2014.4/settings64.sh ]; then
+    source /opt/Xilinx/Vivado/2014.4/settings64.sh 
+fi
+
+export XILINXD_LICENSE_FILE=\
+1703@xilinx-lic.ece.cmu.edu:2101@xilinx-lic.ece.cmu.edu
 
 #-------------------------------------------------------------
 # Tailoring 'less'
@@ -735,6 +740,9 @@ QT|wmv|mp3|MP3|ogg|OGG|ogm|OGM|mp4|MP4|wav|WAV|asx|ASX)' xine
 
 complete -f -o default -X '!*.pl'  perl perl5
 
+#autocomplete after sudo
+complete -cf sudo
+
 
 #  This is a 'universal' completion function - it works when commands have
 #+ a so-called 'long options' mode , ie: 'ls --all' instead of 'ls -a'
@@ -926,7 +934,9 @@ _killall()
 
 complete -F _killall killall killps
 
-
+if [ -f /etc/bash_completion.d/git ]; then
+    source /etc/bash_completion.d/git
+fi
 
 # Local Variables:
 # mode:shell-script
